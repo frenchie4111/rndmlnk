@@ -1,0 +1,24 @@
+machine:
+  pre:
+    - curl https://raw.githubusercontent.com/creationix/nvm/v0.23.3/install.sh | bash
+  node:
+    version: 0.12
+dependencies:
+  override:
+    - npm install
+    - npm install -g sequelize-cli
+    - npm install -g mocha
+database:
+  override:
+    - psql -U postgres -c "CREATE USER rndmlnk_api WITH PASSWORD 'rndmlnk_api';"
+    - psql -U postgres -c "ALTER USER rndmlnk_api CREATEDB"
+    - psql -U postgres -c "CREATE DATABASE rndmlnk_api_test;"
+    - psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE rndmlnk_api_test to rndmlnk_api;"
+    - psql -U postgres -c "ALTER DATABASE rndmlnk_api_test OWNER TO rndmlnk_api;"
+    - sequelize db:migrate --env test
+deployment:
+  production:
+    branch: master
+    commands:
+      - git push git@heroku.com:rndmlnk.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run --app rndmlnk bash ./scripts/migration/heroku_migrate.sh
