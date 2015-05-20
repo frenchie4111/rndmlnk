@@ -10,7 +10,8 @@
 
     var React = require( 'React' );
 
-    var Title = require( './Title.react.jsx' );
+    var Title = require( './Title.react.jsx' ),
+        Bar = require( './Bar.react.jsx' );
 
     var HomepageApp;
 
@@ -41,7 +42,10 @@
                     <Title
                         title={ 'Rndmlnk' }
                         subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
-                    { this.state.links }
+
+                    <Bar>
+                        { this.state.links }
+                    </Bar>
                 </div>
             );
         }

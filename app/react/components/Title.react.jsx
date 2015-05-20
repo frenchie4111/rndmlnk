@@ -53,19 +53,3 @@
         }
     } );
 })();
-
-/*
- .title {
- color: #ECF0F1;
-
- margin-top: 71px;
- }
-
- .title h1 {
- font-size: 48px;
- }
-
- .title h2 {
- font-size: 24px;
- }
- */
