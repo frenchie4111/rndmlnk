@@ -15,7 +15,13 @@
             path: '/asdfasdf',
             method: 'get'
         }, {
-            code: 302
-        } )
+            code: 302,
+            content_type: /text\/plain; charset=utf-8/,
+            body: {}
+        } );
+
+        var link = yield db.Link.findAll();
+        assert.equal( link.length, 1 );
+        assert.equal( link[ 0 ].count, 1 );
     } );
 })();
