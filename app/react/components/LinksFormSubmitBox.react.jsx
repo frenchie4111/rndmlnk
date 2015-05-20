@@ -44,7 +44,6 @@
             return (
                 <Bar
                     style={ this._style.bar }>
-                    Test
                     <Button
                         style={ this._style.submit_button }>
                         Create Link
