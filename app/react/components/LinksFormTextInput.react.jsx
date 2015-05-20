@@ -40,8 +40,10 @@
             this.props.onChange( event.target.value );
         },
         render: function() {
+            console.log( this.props );
             return (
                 <input
+                    type='text'
                     style={ this._style.input }
                     value={ this.props.value }
                     onChange={ this._handleChange }

@@ -18,6 +18,11 @@
                 index: i,
                 new_value: new_text
             } );
+        },
+        addLink: function() {
+            HomepageDispatcher.dispatch( {
+                type: Constants.ADD_LINK
+            } );
         }
     };
 })();

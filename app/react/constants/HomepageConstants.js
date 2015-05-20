@@ -9,6 +9,7 @@
     'use strict';
 
     module.exports = {
-        VALUE_CHANGED: 'VALUE_CHANGED'
+        VALUE_CHANGED: 'VALUE_CHANGED',
+        ADD_LINK: 'ADD_LINK'
     }
 })();

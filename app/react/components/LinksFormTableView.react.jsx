@@ -14,17 +14,14 @@
         TableView = require( './TableView.react.jsx' ),
         LinksFormTextInput = require( './LinksFormTextInput.react.jsx' );
 
-    var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' );
+    var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
+        LinksFormListStore = require( '../stores/LinksFormListStore' );
 
     var LinksFormTableView;
 
     //noinspection JSUnusedAssignment,JSUnusedGlobalSymbols
     module.exports = LinksFormTableView = React.createClass( {
-        getDefaultProps: function() {
-            return {
-                links: []
-            }
-        },
+        // Private
         _style: {
             div: {
                 marginTop: 17,
@@ -60,6 +57,9 @@
                 }
             }
         },
+        _onAddClick: function() {
+            LinksFormActionCreator.addLink();
+        },
         _renderHeader: function() {
             return (
                 <Bar
@@ -69,13 +69,15 @@
                         Links
                     </div>
                     <div
-                        style={ this._style.header.right }>
+                        style={ this._style.header.right }
+                        onClick={ this._onAddClick }>
                         Add
                     </div>
                 </Bar>
             );
         },
         _renderRow: function( item, i ) {
+            console.log( 'rendering row' );
             return (
                 <Bar
                     style={ this._style.row }>
@@ -87,6 +89,29 @@
                 </Bar>
             )
         },
+        _getStateFromDataSource: function() {
+            return {
+                links: LinksFormListStore.getAll()
+            };
+        },
+        _onChange: function() {
+            this.setState( this._getStateFromDataSource );
+            console.log( this.state.links );
+        },
+
+        // React Methods
+        getDefaultProps: function() {
+            return {}
+        },
+        getInitialState: function() {
+            return this._getStateFromDataSource();
+        },
+        componentDidMount: function() {
+            LinksFormListStore.addChangeListener( this._onChange );
+        },
+        componentDidUnmount: function() {
+            LinksFormListStore.removeChangeListener( this._onChange );
+        },
         render: function() {
             return (
                 <div
@@ -94,8 +119,7 @@
                     <TableView
                         renderHeader={ this._renderHeader }
                         renderRow={ this._renderRow }
-                        data={ this.props.links } />
-
+                        data={ this.state.links } />
                 </div>
             );
         }

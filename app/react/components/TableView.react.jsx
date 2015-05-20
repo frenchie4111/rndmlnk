@@ -23,18 +23,6 @@
                 data: []
             };
         },
-        _style: {
-            div: {
-                marginTop: 17
-            },
-            header: {
-                backgroundColor: '#3498DB',
-                color: '#ECF0F1'
-            },
-            row: {
-                backgroundColor: '#D8D8D8'
-            }
-        },
         render: function() {
             var _this = this;
 

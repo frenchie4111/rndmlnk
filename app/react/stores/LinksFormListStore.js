@@ -37,6 +37,11 @@
         _valueChanged: function( index, new_value ) {
             this._links[ index ] = new_value;
             this.emitChange();
+        },
+
+        _addLink: function() {
+            this._links.push( '' );
+            this.emitChange();
         }
     } );
 
@@ -44,6 +49,9 @@
         switch( action.type ) {
             case Constants.VALUE_CHANGED:
                 LinksFormListStore._valueChanged( action.index, action.new_value );
+                break;
+            case Constants.ADD_LINK:
+                LinksFormListStore._addLink();
                 break;
         }
     } );
