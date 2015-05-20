@@ -35,8 +35,12 @@
         },
         render: function() {
             return (
-                <div onClick={ this.onClick }>
-                    <Title title={ 'test' } />
+                <div
+                    onClick={ this.onClick }
+                    className='container'>
+                    <Title
+                        title={ 'Rndmlnk' }
+                        subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
                     { this.state.links }
                 </div>
             );

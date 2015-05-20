@@ -15,17 +15,16 @@
         reactify = require( 'reactify' );
 
     browserify.settings( 'transform', [ 'reactify' ] );
+    browserify.settings.mode = 'production';
 
     var _home = function( req, res ) {
         var markup = React.renderToString( HomepageApp( {} ) );
 
+        console.log( markup );
+
         res.render( 'homepage', {
             markup: markup
         } );
-    };
-
-    var _index = function( req, res ) {
-        res.render( 'index' );
     };
 
     var _counts = function( req, res ) {
