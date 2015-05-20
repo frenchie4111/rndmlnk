@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "rndmlnk",
+        "password": "rndmlnk",
+        "database": "rndmlnk_development",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "test": {
+        "username": "rndmlnk",
+        "password": "rndmlnk",
+        "database": "rndmlnk_test",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "rndmlnk",
+        "password": "rndmlnk",
+        "database": "rndmlnk_production",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    }
+}
