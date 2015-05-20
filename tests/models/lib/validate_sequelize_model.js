@@ -8,6 +8,15 @@
 (function() {
     'use strict';
 
+    var _createDependencyFixtures = function( desc ) {
+        return q
+            .async( function *() {
+                if( desc.hasOwnProperty( 'dependency_fixture_name' ) ) {
+                    yield fixtures.load( [ desc.dependency_fixture_name ] );
+                }
+            } )();
+    };
+
     /**
      * Below is a monster method that runs tests on a model defined in desc
      * @param desc The model definition
@@ -20,6 +29,10 @@
      * @param desc.fields[key].invalid {Array} Invalid values for the field (All tested on invalid step)
      */
     module.exports = function( desc ) {
+        beforeEach( function *() {
+            yield _createDependencyFixtures( desc );
+        } );
+
         describe( 'create', function() {
             it( 'Valid', function *() {
                 var created = yield db[ desc.model_name ].create( desc.valid );

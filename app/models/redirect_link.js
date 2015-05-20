@@ -17,6 +17,7 @@
         }, {
             underscored: true,
             associate: function( models ) {
+                RedirectLink.hasMany( models.Link, { foreignKey: 'redirect_link_id', as: 'links' } );
             }
         } );
 

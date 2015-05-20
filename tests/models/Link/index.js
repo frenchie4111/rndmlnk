@@ -10,6 +10,7 @@
 
     var model = {
         model_name: 'Link',
+        dependency_fixture_name: 'redirect_link',
         fixture_name: 'link',
         valid: {
             redirect_link_id: 1,
@@ -25,7 +26,7 @@
                 valid: [ 'http://test2.com/' ]
             },
             count: {
-                invalid: [ null, undefined ],
+                invalid: [],
                 valid: [ 1 ]
             }
         }

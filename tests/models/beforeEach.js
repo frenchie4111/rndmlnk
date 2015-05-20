@@ -9,6 +9,7 @@
     'use strict';
 
     var models_to_delete = [
+        'Link',
         'RedirectLink'
     ];
 
