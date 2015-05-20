@@ -83,9 +83,29 @@
             } );
     };
 
+    var _getLink = function( req, res ) {
+        q
+            .async( function *() {
+                var redirect_link = yield RedirectLink.find( {
+                    where: {
+                        redirect_link: req.params.link_slug
+                    },
+                    include: [
+                        { all: true }
+                    ]
+                } );
+
+                res.send( redirect_link );
+            } )()
+            .catch( function( err ) {
+                res.status( 500 ).send( err.toString() );
+            } );
+    };
+
     exports.addRoutes = function( app ) {
         app.get( '/:link_slug', _randomLink );
 
         app.post( '/links', _createLink );
+        app.get( '/links/:link_slug', _getLink )
     }
 })();
