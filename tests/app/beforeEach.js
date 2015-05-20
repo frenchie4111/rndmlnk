@@ -8,6 +8,6 @@
 (function() {
     'use strict';
 
-    require( './lib/delete_all' )();
+    require( '../models/lib/delete_all' )();
 
 })();

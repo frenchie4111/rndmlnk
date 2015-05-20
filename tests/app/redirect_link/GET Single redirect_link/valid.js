@@ -8,7 +8,14 @@
 (function() {
     'use strict';
 
-    it( 'smookkkeeeee', function() {
-        assert.isTrue( true );
+    it( 'valid', function *() {
+        yield fixtures.load( [ 'redirect_link', 'link' ] );
+
+        yield trust_then( {
+            path: '/asdfasdf',
+            method: 'get'
+        }, {
+            code: 302
+        } )
     } );
 })();
