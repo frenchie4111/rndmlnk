@@ -11,12 +11,13 @@
     var React = require( 'React' ),
         _ = require( 'underscore' );
 
-    var Title;
+    var Bar;
 
-    module.exports = Title = React.createClass( {
+    module.exports = Bar = React.createClass( {
         getDefaultProps: function() {
             return {
-                backgroundColor: '#3498DB'
+                backgroundColor: '#3498DB',
+                style: {}
             };
         },
         _style: {
@@ -46,7 +47,8 @@
         render: function() {
             return (
                 <div
-                    style={ _.extend( this._style.div,
+                    style={ _.extend( this.props.style,
+                                      this._style.div,
                                       this._getBackgroundColorStyle() ) }>
                     <div
                         style={ this._style.table }>

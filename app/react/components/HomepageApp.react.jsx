@@ -11,7 +11,7 @@
     var React = require( 'React' );
 
     var Title = require( './Title.react.jsx' ),
-        Bar = require( './Bar.react.jsx' );
+        TableView = require( './TableView.react.jsx' );
 
     var HomepageApp;
 
@@ -31,8 +31,34 @@
                 links: this.props.initialLinks
             }
         },
-        onClick: function() {
-            console.log( 'test' );
+        _style: {
+            header: {
+                fontSize: 24,
+                paddingLeft: 17,
+                paddingRight: 17,
+                left: {
+                    float: 'left'
+                },
+                right: {
+                    float: 'right',
+                    textDecoration: 'underline'
+                }
+            }
+        },
+        _renderHeader: function() {
+            return (
+                <div
+                    style={ this._style.header }>
+                    <div
+                        style={ this._style.header.left }>
+                        Links
+                    </div>
+                    <div
+                        style={ this._style.header.right }>
+                        Add
+                    </div>
+                </div>
+            );
         },
         render: function() {
             return (
@@ -43,9 +69,8 @@
                         title={ 'Rndmlnk' }
                         subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
 
-                    <Bar>
-                        { this.state.links }
-                    </Bar>
+                    <TableView
+                        renderHeader={ this._renderHeader } />
                 </div>
             );
         }
