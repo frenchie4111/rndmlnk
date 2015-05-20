@@ -29,6 +29,7 @@
                 border: 0,
                 fontSize: 20,
                 backgroundColor: '#ECF0F1',
+                color: '#717477',
                 paddingLeft: 23,
                 paddingRight: 23,
                 boxSizing: 'border-box',
