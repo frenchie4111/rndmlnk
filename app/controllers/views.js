@@ -12,7 +12,14 @@
         res.render( 'index' );
     };
 
+    var _counts = function( req, res ) {
+        res.render( 'counts', {
+            slug: req.params.slug
+        } );
+    };
+
     exports.addRoutes = function( app ) {
         app.get( '/', _index );
+        app.get( '/counts/:slug', _counts );
     };
 })();

@@ -9,7 +9,8 @@
     'use strict';
 
     var _ = require( 'underscore' ),
-        q = require( 'q' );
+        q = require( 'q' ),
+        assert = require( 'chai' ).assert;
 
     var models = require( '../models' ).db,
         RedirectLink = models.RedirectLink,
