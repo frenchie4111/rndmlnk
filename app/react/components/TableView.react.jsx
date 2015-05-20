@@ -28,17 +28,31 @@
                 marginTop: 17
             },
             header: {
+                backgroundColor: '#3498DB',
                 color: '#ECF0F1'
+            },
+            row: {
+                backgroundColor: '#D8D8D8'
             }
         },
         render: function() {
+            var _this = this;
+
             return (
                 <div
-                    style={ this._style.div }>
-                    <Bar
-                        style={ this._style.header }>
+                    style={ this.props.style }>
+                    <div>
                         { this.props.renderHeader() }
-                    </Bar>
+                    </div>
+                    { this.props.data
+                        .map( function( item, i ) {
+                            return (
+                                <div key={ i }>
+                                    { _this.props.renderRow( item, i ) }
+                                </div>
+                            );
+                        } )
+                    }
                 </div>
             );
         }

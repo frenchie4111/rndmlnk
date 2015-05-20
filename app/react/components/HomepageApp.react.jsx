@@ -11,7 +11,9 @@
     var React = require( 'React' );
 
     var Title = require( './Title.react.jsx' ),
-        TableView = require( './TableView.react.jsx' );
+        LinksFormTableView = require( './LinksFormTableView.react.jsx' );
+
+    var LinksFormListStore = require( '../stores/LinksFormListStore' );
 
     var HomepageApp;
 
@@ -19,17 +21,10 @@
     module.exports = HomepageApp = React.createClass( {
         getDefaultProps: function() {
             return {
-                initialLinks: [
-                    'a',
-                    'b',
-                    'c'
-                ]
             }
         },
         getInitialState: function() {
-            return {
-                links: this.props.initialLinks
-            }
+            return this._getStateFromDataSource();
         },
         _style: {
             header: {
@@ -42,6 +37,10 @@
                 right: {
                     float: 'right',
                     textDecoration: 'underline'
+                },
+                clear: {
+                    clear: 'both',
+                    display: 'none'
                 }
             }
         },
@@ -57,8 +56,32 @@
                         style={ this._style.header.right }>
                         Add
                     </div>
+                    <div
+                        style={ this._style.header.clear }></div>
                 </div>
             );
+        },
+        _renderRow: function( item ) {
+            return (
+                <div>
+                    { item }
+                </div>
+            )
+        },
+        _getStateFromDataSource: function() {
+            return {
+                links: LinksFormListStore.getAll()
+            };
+        },
+        _onChange: function() {
+            console.log( 'changed' );
+            this.setState( this._getStateFromDataSource )
+        },
+        componentDidMount: function() {
+            LinksFormListStore.addChangeListener( this._onChange );
+        },
+        componentDidUnmount: function() {
+            LinksFormListStore.removeChangeListener( this._onChange );
         },
         render: function() {
             return (
@@ -69,8 +92,8 @@
                         title={ 'Rndmlnk' }
                         subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
 
-                    <TableView
-                        renderHeader={ this._renderHeader } />
+                    <LinksFormTableView
+                        links={ this.state.links } />
                 </div>
             );
         }

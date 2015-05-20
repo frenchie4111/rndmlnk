@@ -16,8 +16,9 @@
     module.exports = Bar = React.createClass( {
         getDefaultProps: function() {
             return {
-                backgroundColor: '#3498DB',
-                style: {}
+                style: {
+                    backgroundColor: '#3498DB'
+                }
             };
         },
         _style: {
@@ -38,18 +39,12 @@
                 verticalAlign: 'middle'
             }
         },
-        _getBackgroundColorStyle: function() {
-            var _this = this;
-            return {
-                backgroundColor: _this.props.backgroundColor
-            };
-        },
         render: function() {
+            var bar_style = _.extend( this.props.style, this._style.div );
+
             return (
                 <div
-                    style={ _.extend( this.props.style,
-                                      this._style.div,
-                                      this._getBackgroundColorStyle() ) }>
+                    style={ bar_style }>
                     <div
                         style={ this._style.table }>
                         <div
