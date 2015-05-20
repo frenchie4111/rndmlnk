@@ -10,11 +10,11 @@ dependencies:
     - npm install -g mocha
 database:
   override:
-    - psql -U postgres -c "CREATE USER rndmlnk_api WITH PASSWORD 'rndmlnk_api';"
-    - psql -U postgres -c "ALTER USER rndmlnk_api CREATEDB"
-    - psql -U postgres -c "CREATE DATABASE rndmlnk_api_test;"
-    - psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE rndmlnk_api_test to rndmlnk_api;"
-    - psql -U postgres -c "ALTER DATABASE rndmlnk_api_test OWNER TO rndmlnk_api;"
+    - psql -U postgres -c "CREATE USER rndmlnk WITH PASSWORD 'rndmlnk';"
+    - psql -U postgres -c "ALTER USER rndmlnk CREATEDB"
+    - psql -U postgres -c "CREATE DATABASE rndmlnk_test;"
+    - psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE rndmlnk_test to rndmlnk;"
+    - psql -U postgres -c "ALTER DATABASE rndmlnk_test OWNER TO rndmlnk;"
     - sequelize db:migrate --env test
 deployment:
   production:
