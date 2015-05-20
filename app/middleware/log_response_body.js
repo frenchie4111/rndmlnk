@@ -28,7 +28,8 @@
 
                 var body = Buffer.concat( chunks ).toString( 'utf8' );
                 console.log( "Response" );
-                console.log( req.path, body );
+                //console.log( req.path, body );
+                console.log( req.path );
                 console.log( 'Session After' );
                 console.log( req.session );
                 console.log( "============= End Request =============" );

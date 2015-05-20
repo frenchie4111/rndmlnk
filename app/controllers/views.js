@@ -10,16 +10,16 @@
 
     var jsx = require( 'node-jsx' ).install( { extension: '.jsx' } ),
         React = require( 'react' ),
-        RndmlnkApp = React.createFactory( require( '../react/components/RndmlnkApp.react' ) ),
+        HomepageApp = React.createFactory( require( '../react/components/HomepageApp.react.jsx' ) ),
         browserify = require( 'browserify-middleware' ),
         reactify = require( 'reactify' );
 
     browserify.settings( 'transform', [ 'reactify' ] );
 
-    var _reactTest = function( req, res ) {
-        var markup = React.renderToString( RndmlnkApp( {} ) );
+    var _home = function( req, res ) {
+        var markup = React.renderToString( HomepageApp( {} ) );
 
-        res.render( 'react', {
+        res.render( 'homepage', {
             markup: markup
         } );
     };
@@ -35,10 +35,9 @@
     };
 
     exports.addRoutes = function( app ) {
-        app.get( '/', _index );
+        app.get( '/', _home );
         app.get( '/counts/:slug', _counts );
-        app.get( '/react', _reactTest );
 
-        app.get( '/bundle.js', browserify( 'app/react/browser.js' ) );
+        app.get( '/homepage.js', browserify( 'app/react/homepage.js' ) );
     };
 })();

@@ -10,10 +10,12 @@
 
     var React = require( 'React' );
 
-    var RndmlnkApp;
+    var Title = require( './Title.react.jsx' );
+
+    var HomepageApp;
 
     //noinspection JSUnusedAssignment,JSUnusedGlobalSymbols
-    module.exports = RndmlnkApp = React.createClass( {
+    module.exports = HomepageApp = React.createClass( {
         getDefaultProps: function() {
             return {
                 initialLinks: [
@@ -34,6 +36,7 @@
         render: function() {
             return (
                 <div onClick={ this.onClick }>
+                    <Title title={ 'test' } />
                     { this.state.links }
                 </div>
             );

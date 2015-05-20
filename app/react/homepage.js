@@ -10,7 +10,7 @@
 
     var React = require( 'react' ),
     // This is our React component, shared by server and browser thanks to browserify
-        RndmlnkApp = React.createFactory( require( './components/RndmlnkApp.react.jsx' ) );
+        HomepageApp = React.createFactory( require( './components/HomepageApp.react.jsx' ) );
 
-    React.render( RndmlnkApp(), document.getElementById( 'content' ) )
+    React.render( HomepageApp(), document.getElementById( 'content' ) )
 })();
