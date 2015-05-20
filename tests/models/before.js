@@ -25,6 +25,7 @@
     } );
 
     var models_to_delete = [
+        'RedirectLink'
     ];
 
     beforeEach( function *() {
