@@ -13,6 +13,7 @@
             model: 'RedirectLink',
             key: 'redirect_link',
             data: {
+                id: 1,
                 redirect_link: 'asdfasdf'
             }
         }
