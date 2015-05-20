@@ -11,7 +11,7 @@
     var COUNTS_URL = '/links/' + window.SLUG;
 
     var parseCounts = function( redirect_link ) {
-        $( '#link_link' ).prop( 'href', '/' + redirect_link.redirect_link );
+        $( '#link_link' ).prop( 'href', '/s/' + redirect_link.redirect_link );
         $( '#link_name' ).text( redirect_link.redirect_link );
 
         redirect_link.links
