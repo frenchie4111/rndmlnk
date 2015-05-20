@@ -14,6 +14,7 @@
     // Ordering of this array DEFINITELY matters
     var middleware = [
         require( './log_response_body' )(),
+        require( './view_parser' ),
         require( 'body-parser' ).json(),
         require( 'body-parser' ).urlencoded( { extended: true } ),
         require( './log_request_body' )()

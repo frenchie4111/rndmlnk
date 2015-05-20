@@ -9,7 +9,6 @@
     'use strict';
 
     var express = require( 'express' ),
-        cors = require( 'cors' ),
         q = require( 'q' ),
         models = require( './models' );
 
@@ -20,17 +19,6 @@
         server = null;
 
     middleware.initialize( app );
-
-    var whitelist = [ 'https://doubledor.com', 'http://www.doubledor.com', 'http://doubledor.com', 'http://127.0.0.1:8282' ];
-    //noinspection JSUnusedGlobalSymbols
-    var cors_options = {
-        origin: function( origin, callback ) {
-            var origin_is_whitelisted = whitelist.indexOf( origin ) !== -1;
-            console.log( origin, origin_is_whitelisted, whitelist );
-            callback( null, origin_is_whitelisted );
-        }
-    };
-    app.use( cors( cors_options ) );
 
     var startServer = function() {
         return q.Promise( function( resolve ) {
