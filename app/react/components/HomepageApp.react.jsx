@@ -11,7 +11,7 @@
     var React = require( 'React' );
 
     var Title = require( './Title.react.jsx' ),
-        LinksFormTableView = require( './LinksFormTableView.react.jsx' );
+        LinksForm = require( './LinksForm.react.jsx' );
 
     var HomepageApp;
 
@@ -72,7 +72,7 @@
                         title={ 'Rndmlnk' }
                         subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
 
-                    <LinksFormTableView />
+                    <LinksForm />
                 </div>
             );
         }
