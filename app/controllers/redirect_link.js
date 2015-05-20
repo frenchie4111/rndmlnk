@@ -104,7 +104,7 @@
     };
 
     exports.addRoutes = function( app ) {
-        app.get( '/:link_slug', _randomLink );
+        app.get( '/s/:link_slug', _randomLink );
 
         app.post( '/links', _createLink );
         app.get( '/links/:link_slug', _getLink )

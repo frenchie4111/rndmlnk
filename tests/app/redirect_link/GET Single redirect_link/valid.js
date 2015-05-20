@@ -12,7 +12,7 @@
         yield fixtures.load( [ 'redirect_link', 'link' ] );
 
         yield trust_then( {
-            path: '/asdfasdf',
+            path: '/s/asdfasdf',
             method: 'get'
         }, {
             code: 302,
