@@ -16,14 +16,20 @@
 
         redirect_link.links
             .map( function( link ) {
-                var div = $( '<div class="link"></div>' );
+                var tr = $( '<tr></tr>' );
 
-                div.text( link.link + ' - ' + link.count );
+                var td_link = $( '<td></td>' );
+                td_link.text( link.link );
+                tr.append( td_link );
 
-                return div;
+                var td_count = $( '<td></td>' );
+                td_count.text( link.count );
+                tr.append( td_count );
+
+                return tr;
             } )
             .forEach( function( link_html ) {
-                $( '#create_container' ).append( link_html );
+                $( '#table' ).append( link_html );
             } );
     };
 
