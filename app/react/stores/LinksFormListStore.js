@@ -17,6 +17,8 @@
     var LinksFormListStore = assign( {}, EventEmitter.prototype, {
         CHANGE_EVENT: 'change',
         _links: [ '', '', '' ],
+        _state: Constants.STATES.ENTERING,
+        _slug: '',
 
         emitChange: function() {
             this.emit( this.CHANGE_EVENT );
@@ -34,6 +36,14 @@
             return this._links;
         },
 
+        getState: function() {
+            return this._state;
+        },
+
+        getSlug: function() {
+            return this._slug;
+        },
+
         _valueChanged: function( index, new_value ) {
             this._links[ index ] = new_value;
             this.emitChange();
@@ -41,6 +51,16 @@
 
         _addLink: function() {
             this._links.push( '' );
+            this.emitChange();
+        },
+
+        _setState: function( new_state ) {
+            this._state = new_state;
+            this.emitChange();
+        },
+
+        _setSlug: function( new_slug ) {
+            this._slug = new_slug;
             this.emitChange();
         }
     } );
@@ -52,6 +72,13 @@
                 break;
             case Constants.ADD_LINK:
                 LinksFormListStore._addLink();
+                break;
+            case Constants.STATES.SUBMITTING:
+                LinksFormListStore._setState( action.type );
+                break;
+            case Constants.STATES.SUBMITTED:
+                LinksFormListStore._setState( action.type );
+                LinksFormListStore._setSlug( action.slug );
                 break;
         }
     } );

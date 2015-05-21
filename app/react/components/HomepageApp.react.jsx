@@ -11,59 +11,54 @@
     var React = require( 'react' );
 
     var Title = require( './Title.react.jsx' ),
-        LinksForm = require( './LinksForm.react.jsx' );
+        LinksForm = require( './LinksForm.react.jsx' ),
+        LinksSubmitting = require( './LinksSubmitting.react.jsx' );
+
+    var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
+        LinksFormListStore = require( '../stores/LinksFormListStore' ),
+        Constants = require( '../constants/HomepageConstants' );
 
     var HomepageApp;
 
     //noinspection JSUnusedAssignment,JSUnusedGlobalSymbols
     module.exports = HomepageApp = React.createClass( {
+        _style: {
+        },
+        _getStateFromStores: function() {
+            return {
+                form_state: LinksFormListStore.getState()
+            };
+        },
+        _onChange: function() {
+            this.setState( this._getStateFromStores() );
+        },
         getDefaultProps: function() {
             return {
             }
         },
-        _style: {
-            header: {
-                fontSize: 24,
-                paddingLeft: 17,
-                paddingRight: 17,
-                left: {
-                    float: 'left'
-                },
-                right: {
-                    float: 'right',
-                    textDecoration: 'underline'
-                },
-                clear: {
-                    clear: 'both',
-                    display: 'none'
-                }
+        getInitialState: function() {
+            return this._getStateFromStores();
+        },
+        componentDidMount: function() {
+            LinksFormListStore.addChangeListener( this._onChange );
+        },
+        componentDidUnmount: function() {
+            LinksFormListStore.removeChangeListener( this._onChange );
+        },
+        _renderFormState: function() {
+            switch( this.state.form_state ) {
+                case( Constants.STATES.ENTERING ):
+                    return (
+                        <LinksForm />
+                    );
+                case( Constants.STATES.SUBMITTING ):
+                    return (
+                        <LinksSubmitting />
+                    );
             }
         },
-        _renderHeader: function() {
-            return (
-                <div
-                    style={ this._style.header }>
-                    <div
-                        style={ this._style.header.left }>
-                        Links
-                    </div>
-                    <div
-                        style={ this._style.header.right }>
-                        Add
-                    </div>
-                    <div
-                        style={ this._style.header.clear }></div>
-                </div>
-            );
-        },
-        _renderRow: function( item ) {
-            return (
-                <div>
-                    { item }
-                </div>
-            )
-        },
         render: function() {
+            console.log( this.state );
             return (
                 <div
                     onClick={ this.onClick }
@@ -72,7 +67,7 @@
                         title={ 'Rndmlnk' }
                         subtitle={ 'Creates a link that will randomly redirect to a list of other links' } />
 
-                    <LinksForm />
+                    { this._renderFormState() }
                 </div>
             );
         }

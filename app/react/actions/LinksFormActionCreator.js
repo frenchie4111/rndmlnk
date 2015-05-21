@@ -23,6 +23,11 @@
             HomepageDispatcher.dispatch( {
                 type: Constants.ADD_LINK
             } );
+        },
+        submitForm: function() {
+            HomepageDispatcher.dispatch( {
+                type: Constants.STATES.SUBMITTING
+            } );
         }
     };
 })();

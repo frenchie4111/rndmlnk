@@ -10,6 +10,11 @@
 
     module.exports = {
         VALUE_CHANGED: 'VALUE_CHANGED',
-        ADD_LINK: 'ADD_LINK'
+        ADD_LINK: 'ADD_LINK',
+        STATES: {
+            ENTERING: 'ENTERING',
+            SUBMITTING: 'SUBMITTING',
+            SUBMITTED: 'SUBMITTED'
+        }
     }
 })();

@@ -53,7 +53,8 @@
                 <div
                     className={ this.props.className }
                     style={ _.extend( this.props.style,
-                                      this._style.div ) }>
+                                      this._style.div ) }
+                    onClick={ this.props.onClick }>
                     <div
                         style={ this._style.table }>
                         <div

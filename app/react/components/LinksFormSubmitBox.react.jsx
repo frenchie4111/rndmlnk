@@ -45,7 +45,8 @@
                 <Bar
                     style={ this._style.bar }>
                     <Button
-                        style={ this._style.submit_button }>
+                        style={ this._style.submit_button }
+                        onClick={ function() { LinksFormActionCreator.submitForm() } }>
                         Create Link
                     </Button>
                 </Bar>
