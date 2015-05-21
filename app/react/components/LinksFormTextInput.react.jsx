@@ -16,7 +16,7 @@
     module.exports = LinksFormTextInput = React.createClass( {
         getDefaultProps: function() {
             return {
-                placeholder: 'http://example1.com/',
+                placeholder: 'http://example.com/',
                 onChange: function() {},
                 value: ''
             }
