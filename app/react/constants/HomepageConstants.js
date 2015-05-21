@@ -10,6 +10,7 @@
 
     module.exports = {
         VALUE_CHANGED: 'VALUE_CHANGED',
+        SLUG_CHANGED: 'SLUG_CHANGED',
         ADD_LINK: 'ADD_LINK',
         STATES: {
             ENTERING: 'ENTERING',

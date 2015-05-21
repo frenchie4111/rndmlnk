@@ -74,7 +74,8 @@
             var _this = this;
             $
                 .post( '/links', {
-                    links: _this._getLinksForPOST()
+                    links: _this._getLinksForPOST(),
+                    redirect_link: _this.getSlug() || undefined
                 }, function( data ) {
                     console.log( 'response', data );
                     _this._setSlug( data.redirect_link );
@@ -88,6 +89,9 @@
         switch( action.type ) {
             case Constants.VALUE_CHANGED:
                 LinksFormListStore._valueChanged( action.index, action.new_value );
+                break;
+            case Constants.SLUG_CHANGED:
+                LinksFormListStore._setSlug( action.new_slug );
                 break;
             case Constants.ADD_LINK:
                 LinksFormListStore._addLink();
