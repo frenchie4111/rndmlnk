@@ -1,25 +1,5 @@
 <%= include templates/header %>
 
-<script>
-    window.SLUG = '<%= slug %>';
-</script>
-
-<script src="/javascript/counts.js"></script>
-
-<div id="create_container">
-    <h2>
-        Link: <a id="link_link">http://rndmlnk.com/s/<span id="link_name"></span></a>
-    </h2><br/>
-    <table id="table">
-        <tr>
-            <th>
-                Link
-            </th>
-            <th>
-                Count
-            </th>
-        </tr>
-    </table>
-</div>
+<div id="content"><%- locals.markup %></div>
 
 <%= include templates/footer %>
