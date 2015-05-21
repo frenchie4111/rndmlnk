@@ -16,7 +16,7 @@
 
     var LinksFormListStore = assign( {}, EventEmitter.prototype, {
         CHANGE_EVENT: 'change',
-        _links: [ 'asdf', '', '' ],
+        _links: [ '', '', '' ],
 
         emitChange: function() {
             this.emit( this.CHANGE_EVENT );
