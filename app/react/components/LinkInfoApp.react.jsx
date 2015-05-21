@@ -34,7 +34,8 @@
                         subtitle={ this.props.link } />
 
                     <LinkInfo
-                        links={ this.props.links }/>
+                        links={ this.props.links }
+                        total={ this.props.total }/>
                 </div>
             );
         }

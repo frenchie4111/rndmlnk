@@ -8,7 +8,8 @@
 (function() {
     'use strict';
 
-    var React = require( 'react' );
+    var React = require( 'react' ),
+        _ = require( 'underscore' );
 
     var Bar = require( './Bar.react.jsx' ),
         TableView = require( './TableView.react.jsx' ),
@@ -87,17 +88,27 @@
         // React Methods
         getDefaultProps: function() {
             return {
-                links: []
+                links: [],
+                total: 0
             };
         },
         render: function() {
             return (
-                <div
-                    style={ this._style.div }>
-                    <TableView
-                        renderHeader={ this._renderHeader }
-                        renderRow={ this._renderRow }
-                        data={ this.props.links } />
+                <div>
+                    <div
+                        style={ this._style.div }>
+                        <TableView
+                            renderHeader={ this._renderHeader }
+                            renderRow={ this._renderRow }
+                            data={ this.props.links } />
+                    </div>
+                    <Bar
+                        style={ _.extend( this._style.header, this._style.div ) }>
+                        <div
+                            style={ this._style.header.right }>
+                            Total: { this.props.total }
+                        </div>
+                    </Bar>
                 </div>
             );
         }

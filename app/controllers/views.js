@@ -46,9 +46,12 @@
 
                 if( !redirect_link ) throw Error( 'Not Found' );
 
+                var total = redirect_link.links.reduce( function( full, part ) { return full + part.count }, 0 );
+
                 var markup = React.renderToString( LinkInfoApp( {
                     link: 'http://rndmlnk.com/s/' + req.params.slug,
-                    links: redirect_link.links
+                    links: redirect_link.links,
+                    total: total
                 } ) );
 
                 res
