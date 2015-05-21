@@ -62,6 +62,25 @@
         _setSlug: function( new_slug ) {
             this._slug = new_slug;
             this.emitChange();
+        },
+
+        _getLinksForPOST: function() {
+            return this._links.map( function( link ) {
+                return { link: link };
+            } )
+        },
+
+        _submitForm: function() {
+            var _this = this;
+            $
+                .post( '/links', {
+                    links: _this._getLinksForPOST()
+                }, function( data ) {
+                    console.log( 'response', data );
+                    _this._setSlug( data.redirect_link );
+                    _this._setState( Constants.STATES.SUBMITTED );
+                    _this.emitChange();
+                } );
         }
     } );
 
@@ -75,6 +94,7 @@
                 break;
             case Constants.STATES.SUBMITTING:
                 LinksFormListStore._setState( action.type );
+                LinksFormListStore._submitForm();
                 break;
             case Constants.STATES.SUBMITTED:
                 LinksFormListStore._setState( action.type );

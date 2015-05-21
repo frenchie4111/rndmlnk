@@ -12,7 +12,8 @@
 
     var Title = require( './Title.react.jsx' ),
         LinksForm = require( './LinksForm.react.jsx' ),
-        LinksSubmitting = require( './LinksSubmitting.react.jsx' );
+        LinksSubmitting = require( './LinksSubmitting.react.jsx' ),
+        LinksSubmitted = require( './LinksSubmitted.react.jsx' );
 
     var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
         LinksFormListStore = require( '../stores/LinksFormListStore' ),
@@ -26,7 +27,8 @@
         },
         _getStateFromStores: function() {
             return {
-                form_state: LinksFormListStore.getState()
+                form_state: LinksFormListStore.getState(),
+                slug: LinksFormListStore.getSlug()
             };
         },
         _onChange: function() {
@@ -54,6 +56,11 @@
                 case( Constants.STATES.SUBMITTING ):
                     return (
                         <LinksSubmitting />
+                    );
+                case( Constants.STATES.SUBMITTED ):
+                    return (
+                        <LinksSubmitted
+                            slug={ this.state.slug } />
                     );
             }
         },
