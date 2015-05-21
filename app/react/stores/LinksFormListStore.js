@@ -18,7 +18,7 @@
         CHANGE_EVENT: 'change',
         _links: [ '', '', '' ],
         _state: Constants.STATES.ENTERING,
-        _slug: '',
+        _slug: null,
 
         emitChange: function() {
             this.emit( this.CHANGE_EVENT );
