@@ -19,15 +19,20 @@
             return {
                 style: {
                     backgroundColor: '#2980B9'
-                }
+                },
+                className: 'hover_start2'
             }
+        },
+        getInitialState: function() {
+            return {
+                hover: false
+            };
         },
         _style: {
             div: {
                 width: 175,
                 height: 38,
-                borderRadius: 2,
-                boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.24), 0px 0px 2px 0px rgba(0, 0, 0, .12)'
+                borderRadius: 2
             },
             table: {
                 display: 'table',
@@ -46,7 +51,9 @@
         render: function() {
             return (
                 <div
-                    style={ _.extend( this.props.style, this._style.div ) }>
+                    className={ this.props.className }
+                    style={ _.extend( this.props.style,
+                                      this._style.div ) }>
                     <div
                         style={ this._style.table }>
                         <div
