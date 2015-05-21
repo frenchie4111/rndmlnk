@@ -65,7 +65,7 @@
                             style={ this._style.row }>
                             <div
                                 style={ this._style.row.left }>
-                                <a href='http://rndmlnk.com/s/{ this.props.slug }'>http://rndmlnk.com/s/{ this.props.slug }</a>
+                                <a href={ 'http://rndmlnk.com/s/' + this.props.slug }>http://rndmlnk.com/s/{ this.props.slug }</a>
                             </div>
                         </Bar>
                     </div>
@@ -82,7 +82,7 @@
                             style={ this._style.row }>
                             <div
                                 style={ this._style.row.left }>
-                                <a href='http://rndmlnk.com/counts/{ this.props.slug }'>http://rndmlnk.com/counts/{ this.props.slug }</a>
+                                <a href={ 'http://rndmlnk.com/counts/' + this.props.slug }>http://rndmlnk.com/counts/{ this.props.slug }</a>
                             </div>
                         </Bar>
                     </div>
