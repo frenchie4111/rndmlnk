@@ -71,7 +71,6 @@
             );
         },
         _renderRow: function( item, i ) {
-            console.log( 'rendering row' );
             return (
                 <Bar
                     style={ this._style.row }>

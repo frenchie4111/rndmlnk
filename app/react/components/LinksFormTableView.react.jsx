@@ -77,7 +77,6 @@
             );
         },
         _renderRow: function( item, i ) {
-            console.log( 'rendering row' );
             return (
                 <Bar
                     style={ this._style.row }>
@@ -99,7 +98,6 @@
         },
         _onChange: function() {
             this.setState( this._getStateFromDataSource );
-            console.log( this.state.links );
         },
 
         // React Methods

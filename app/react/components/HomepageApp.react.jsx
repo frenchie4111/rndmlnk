@@ -65,7 +65,6 @@
             }
         },
         render: function() {
-            console.log( this.state );
             return (
                 <div
                     onClick={ this.onClick }

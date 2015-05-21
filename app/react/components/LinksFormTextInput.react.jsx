@@ -57,7 +57,6 @@
             this.props.onChange( event.target.value );
         },
         render: function() {
-            console.log( this.props );
             return (
                 <div
                     style={ this._style.div }>
