@@ -54,6 +54,9 @@
                     height: '100%',
                     border: 0,
                     fontSize: 20
+                },
+                table_cell: {
+                    height: '100%'
                 }
             }
         },
@@ -79,7 +82,8 @@
         _renderRow: function( item, i ) {
             return (
                 <Bar
-                    style={ this._style.row }>
+                    style={ this._style.row }
+                    table_cell_style={ this._style.row.table_cell }>
                     <LinksFormTextInput
                         value={ item }
                         onChange={ function( new_value ) {

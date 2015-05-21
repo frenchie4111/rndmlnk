@@ -18,7 +18,8 @@
             return {
                 style: {
                     backgroundColor: '#3498DB'
-                }
+                },
+                table_cell_style: {}
             };
         },
         _style: {
@@ -50,7 +51,7 @@
                         <div
                             style={ this._style.table_row }>
                             <div
-                                style={ this._style.table_cell }>
+                                style={ _.extend( this._style.table_cell, this.props.table_cell_style ) }>
                                 { this.props.children }
                             </div>
                         </div>
