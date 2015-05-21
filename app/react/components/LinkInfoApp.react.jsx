@@ -8,7 +8,7 @@
 (function() {
     'use strict';
 
-    var React = require( 'React' );
+    var React = require( 'react' );
 
     var Title = require( './Title.react.jsx' ),
         LinkInfo = require( './LinkInfo.react.jsx' );

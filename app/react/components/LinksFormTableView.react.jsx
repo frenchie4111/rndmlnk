@@ -8,7 +8,7 @@
 (function() {
     'use strict';
 
-    var React = require( 'React' );
+    var React = require( 'react' );
 
     var Bar = require( './Bar.react.jsx' ),
         TableView = require( './TableView.react.jsx' ),

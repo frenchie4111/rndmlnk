@@ -8,7 +8,7 @@
 (function() {
     'use strict';
 
-    var React = require( 'React' ),
+    var React = require( 'react' ),
         _ = require( 'underscore' );
 
     var Bar;
