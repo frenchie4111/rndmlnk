@@ -90,6 +90,7 @@
                             style={ this._style.slug_text.input }
                             onChange={ this._onSlugChange }
                             value={ this.state.slug }
+                            placeholder='optional'
                             />
                     </div>
                     <Button
