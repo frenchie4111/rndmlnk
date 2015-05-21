@@ -46,7 +46,8 @@
                 backgroundColor: '#ECF0F1',
                 left: {
                     paddingLeft: 17,
-                    float: 'left'
+                    float: 'left',
+                    maxWidth: 700
                 },
                 right: {
                     paddingRight: 17,
