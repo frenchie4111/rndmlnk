@@ -22,3 +22,4 @@ deployment:
     commands:
       - git push git@heroku.com:rndmlnk.git $CIRCLE_SHA1:refs/heads/master
       - heroku run --app rndmlnk bash ./scripts/migration/heroku_migrate.sh
+      - curl http://rndmlnk.com/homepage.js
