@@ -20,7 +20,7 @@
         RedirectLink = models.RedirectLink;
 
     browserify.settings( 'transform', [ 'reactify' ] );
-    browserify.settings.mode = 'production';
+    browserify.settings.mode = ( process.env.NODE_ENV === 'test' ) ? 'test' : 'production';
 
     var _home = function( req, res ) {
         var markup = React.renderToString( HomepageApp( {} ) );
