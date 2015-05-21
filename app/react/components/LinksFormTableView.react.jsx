@@ -85,6 +85,9 @@
                         value={ item }
                         onChange={ function( new_value ) {
                             LinksFormActionCreator.textChanged( i, new_value );
+                        } }
+                        onDelete={ function() {
+                            LinksFormActionCreator.indexDeleted( i );
                         } }/>
                 </Bar>
             )

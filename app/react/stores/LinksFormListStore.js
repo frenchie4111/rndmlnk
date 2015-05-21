@@ -49,6 +49,11 @@
             this.emitChange();
         },
 
+        _valueRemoved: function( index ) {
+            this._links.splice( index, 1 );
+            this.emitChange();
+        },
+
         _addLink: function() {
             this._links.push( '' );
             this.emitChange();
@@ -89,6 +94,9 @@
         switch( action.type ) {
             case Constants.VALUE_CHANGED:
                 LinksFormListStore._valueChanged( action.index, action.new_value );
+                break;
+            case Constants.VALUE_REMOVED:
+                LinksFormListStore._valueRemoved( action.index );
                 break;
             case Constants.SLUG_CHANGED:
                 LinksFormListStore._setSlug( action.new_slug );

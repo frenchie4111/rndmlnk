@@ -30,7 +30,9 @@
         },
         _style: {
             div: {
-                width: 175,
+                boxSizing: 'border-box',
+                paddingLeft: 20,
+                paddingRight: 20,
                 height: 38,
                 borderRadius: 2
             },

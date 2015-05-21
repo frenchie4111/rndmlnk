@@ -19,6 +19,12 @@
                 new_value: new_text
             } );
         },
+        indexDeleted: function( i ) {
+            HomepageDispatcher.dispatch( {
+                type: Constants.VALUE_REMOVED,
+                index: i
+            } );
+        },
         slugChanged: function( new_slug ) {
             HomepageDispatcher.dispatch( {
                 type: Constants.SLUG_CHANGED,

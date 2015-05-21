@@ -10,6 +10,8 @@
 
     var React = require( 'react' );
 
+    var Button = require( './Button.react.jsx' );
+
     var LinksFormTextInput;
 
     //noinspection JSUnusedAssignment,JSUnusedGlobalSymbols
@@ -18,10 +20,16 @@
             return {
                 placeholder: 'http://example.com/',
                 onChange: function() {},
+                onDelete: function() {},
                 value: ''
             }
         },
         _style: {
+            div: {
+                width: '100%',
+                height: '100%',
+                position: 'relative'
+            },
             input: {
                 margin: 0,
                 width: '100%',
@@ -34,6 +42,15 @@
                 paddingRight: 23,
                 boxSizing: 'border-box',
                 outline: 'none'
+            },
+            delete_button: {
+                zIndex: 100,
+                position: 'absolute',
+                right: 20,
+                top: 12,
+                backgroundColor: '#E74C3C',
+                color: '#ECF0F1',
+                fontWeight: 'normal'
             }
         },
         _handleChange: function( event ) {
@@ -42,12 +59,20 @@
         render: function() {
             console.log( this.props );
             return (
-                <input
-                    type='text'
-                    style={ this._style.input }
-                    value={ this.props.value }
-                    onChange={ this._handleChange }
-                    placeholder={ this.props.placeholder } />
+                <div
+                    style={ this._style.div }>
+                    <input
+                        type='text'
+                        style={ this._style.input }
+                        value={ this.props.value }
+                        onChange={ this._handleChange }
+                        placeholder={ this.props.placeholder } />
+                    <Button
+                        style={ this._style.delete_button }
+                        onClick={ this.props.onDelete }>
+                        Remove
+                    </Button>
+                </div>
             );
         }
     } );
