@@ -8,7 +8,8 @@
 (function() {
     'use strict';
 
-    var React = require( 'react' );
+    var React = require( 'react' ),
+        _ = require( 'underscore' );
 
     var Button = require( './Button.react.jsx' );
 
@@ -21,7 +22,8 @@
                 placeholder: 'http://example.com/',
                 onChange: function() {},
                 onDelete: function() {},
-                value: ''
+                value: '',
+                error: false
             }
         },
         _style: {
@@ -41,7 +43,10 @@
                 paddingLeft: 23,
                 paddingRight: 23,
                 boxSizing: 'border-box',
-                outline: 'none'
+                outline: 'none',
+                error: {
+                    backgroundColor: '#E74C3C'
+                }
             },
             delete_button: {
                 zIndex: 100,
@@ -56,13 +61,22 @@
         _handleChange: function( event ) {
             this.props.onChange( event.target.value );
         },
+        _getInputStyle: function() {
+            var style = this._style.input;
+
+            if( this.props.error ) {
+                style = _.extend( style, this._style.input.error );
+            }
+
+            return style;
+        },
         render: function() {
             return (
                 <div
                     style={ this._style.div }>
                     <input
                         type='text'
-                        style={ this._style.input }
+                        style={ this._getInputStyle() }
                         value={ this.props.value }
                         onChange={ this._handleChange }
                         placeholder={ this.props.placeholder } />
