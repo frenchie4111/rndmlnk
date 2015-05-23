@@ -12,7 +12,7 @@
 
     var Bar = require( '../../shared/Box.react.jsx' ),
         TableView = require( '../../shared/TableView.react.jsx' ),
-        LinksList = require( './../LinksList.react.jsx' ),
+        LinksList = require( './LinksList.react.jsx' ),
         SubmitBox = require( './SubmitBox.react.jsx' ),
         FormSubmitting = require( './FormSubmitting.react.jsx' ),
         FormSubmitted = require( './FormSubmitted.react.jsx' );
