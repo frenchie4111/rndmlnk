@@ -11,12 +11,11 @@
     var React = require( 'react' ),
         _ = require( 'underscore' );
 
-    var Bar = require( './Bar.react.jsx' ),
-        TableView = require( './TableView.react.jsx' ),
-        LinksFormTextInput = require( './LinksFormTextInput.react.jsx' );
+    var Bar = require( '../../shared/Box.react.jsx' ),
+        TableView = require( '../../shared/TableView.react.jsx' );
 
-    var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
-        LinksFormListStore = require( '../stores/LinksFormListStore' );
+    var LinksFormActionCreator = require( '../../../actions/LinksFormActionCreator' ),
+        LinksFormListStore = require( '../../../stores/LinksFormListStore' );
 
     var LinkInfo;
 

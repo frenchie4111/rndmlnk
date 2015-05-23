@@ -10,8 +10,8 @@
 
     var React = require( 'react' );
 
-    var Title = require( './Title.react.jsx' ),
-        LinkInfo = require( './LinkInfo.react.jsx' );
+    var Title = require( './shared/Title.react.jsx' ),
+        LinkInfo = require( './pages/LinkInfo/LinkInfo.react.jsx' );
 
     var LinkInfoApp;
 

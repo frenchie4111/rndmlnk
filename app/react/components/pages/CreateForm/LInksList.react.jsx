@@ -10,12 +10,12 @@
 
     var React = require( 'react' );
 
-    var Bar = require( './Bar.react.jsx' ),
-        TableView = require( './TableView.react.jsx' ),
-        LinksFormTextInput = require( './LinksFormTextInput.react.jsx' );
+    var Bar = require( '../../shared/Box.react.jsx' ),
+        TableView = require( '../../shared/TableView.react.jsx' ),
+        LinksFormTextInput = require( '../../shared/RemovableTextInput.react.jsx' );
 
-    var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
-        LinksFormListStore = require( '../stores/LinksFormListStore' );
+    var LinksFormActionCreator = require( '../../../actions/LinksFormActionCreator' ),
+        LinksFormListStore = require( '../../../stores/LinksFormListStore' );
 
     var LinksFormTableView;
 

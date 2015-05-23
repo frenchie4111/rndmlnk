@@ -11,7 +11,7 @@
     var React = require( 'react' ),
         _ = require( 'underscore' );
 
-    var Bar = require( './Bar.react.jsx' );
+    var Bar = require( './Box.react.jsx' );
 
     var TableView;
 

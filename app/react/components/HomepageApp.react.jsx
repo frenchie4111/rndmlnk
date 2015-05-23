@@ -10,10 +10,10 @@
 
     var React = require( 'react' );
 
-    var Title = require( './Title.react.jsx' ),
-        LinksForm = require( './LinksForm.react.jsx' ),
-        LinksSubmitting = require( './LinksSubmitting.react.jsx' ),
-        LinksSubmitted = require( './LinksSubmitted.react.jsx' );
+    var Title = require( './shared/Title.react.jsx' ),
+        LinksForm = require( './pages/CreateForm/CreateForm.react.jsx' ),
+        LinksSubmitting = require( './pages/CreateForm/FormSubmitting.jsx' ),
+        LinksSubmitted = require( './pages/CreateForm/FormSubmitted.react.jsx' );
 
     var LinksFormActionCreator = require( '../actions/LinksFormActionCreator' ),
         LinksFormListStore = require( '../stores/LinksFormListStore' ),

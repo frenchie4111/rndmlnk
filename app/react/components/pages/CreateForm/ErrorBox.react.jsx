@@ -11,7 +11,7 @@
     var React = require( 'react' ),
         _ = require( 'underscore' );
 
-    var Bar = require( './Bar.react.jsx' );
+    var Bar = require( '../../shared/Box.react.jsx' );
 
     var ErrorBox;
 
