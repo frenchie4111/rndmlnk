@@ -99,7 +99,7 @@
                 } )
                 .error( function( err ) {
                     console.log( err );
-                    _this._setError( err.responseText );
+                    _this._setError( err.responseJSON.error );
                     _this._setState( Constants.STATES.ENTERING );
                     _this.emitChange();
                 } );

@@ -80,7 +80,15 @@
             } )()
             .catch( function( err ) {
                 console.log( err.stack );
-                res.status( 500 ).send( err.toString() );
+
+                switch( err.name ) {
+                    case( 'SequelizeUniqueConstraintError' ):
+                        res.status( 400 ).send( { error: 'Url Already Taken' } );
+                        break;
+                    default:
+                        res.status( 500 ).send( { error: err.toString() } );
+                        break;
+                }
             } );
     };
 
