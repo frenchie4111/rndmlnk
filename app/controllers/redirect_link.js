@@ -16,6 +16,8 @@
         RedirectLink = models.RedirectLink,
         Link = models.Link;
 
+    var LINK_REGEX = new RegExp( "^(http[s]?:\\/\\/(www\\.)?|ftp:\\/\\/(www\\.)?|www\\.){1}([0-9A-Za-z-\\.@:%_\+~#=]+)+((\\.[a-zA-Z]{2,3})+)(/(.)*)?(\\?(.)*)?" );
+
     var _randomLink = function( req, res ) {
         q
             .async( function *() {
@@ -50,9 +52,31 @@
     var _createLink = function( req, res ) {
         q
             .async( function *() {
-                assert.isDefined( req.body );
-                assert.isDefined( req.body.links );
-                assert.isTrue( req.body.links.length > 0 );
+                assert.isDefined( req.body, 'Something has gone terribly wrong' );
+                assert.isDefined( req.body.links, 'No Links specified' );
+                assert.isTrue( req.body.links.length > 0, 'No Links specified' );
+
+                // Check links
+                var invalids = req.body.links
+                    .map( function( link, i ) {
+                        if( !LINK_REGEX.test( link.link ) ) {
+                            return i;
+                        }
+                        return null;
+                    } )
+                    .filter( function( item ) {
+                        return ( item !== null );
+                    } );
+
+                console.log( invalids );
+
+                if( invalids.length > 0 ) {
+                    var err = new Error();
+                    err.name = 'InvalidLink';
+                    err.message = 'Invalid Link' + ( ( invalids.length !== 1 ) ? 's' : '' );
+                    err.invalids = invalids;
+                    throw err;
+                }
 
                 if( !req.body.hasOwnProperty( 'redirect_link' ) ) {
                     req.body.redirect_link = _createRandomSlug();
@@ -82,6 +106,9 @@
                 console.log( err.stack );
 
                 switch( err.name ) {
+                    case( 'InvalidLink' ):
+                        res.status( 400 ).send( { error: err.message, invalids: err.invalids } );
+                        break;
                     case( 'SequelizeUniqueConstraintError' ):
                         res.status( 400 ).send( { error: 'Url Already Taken' } );
                         break;

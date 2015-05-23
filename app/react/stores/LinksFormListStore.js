@@ -20,6 +20,7 @@
         _state: Constants.STATES.ENTERING,
         _slug: null,
         _error: null,
+        _invalidLinks: [],
 
         emitChange: function() {
             this.emit( this.CHANGE_EVENT );
@@ -47,6 +48,10 @@
 
         getError: function() {
             return this._error;
+        },
+
+        getInvalidLinks: function() {
+            return this._invalidLinks;
         },
 
         _valueChanged: function( index, new_value ) {
@@ -79,6 +84,11 @@
             this.emitChange();
         },
 
+        _setInvalidLinks: function( new_invalid_links ) {
+            this._invalidLinks = new_invalid_links;
+            this.emitChange();
+        },
+
         _getLinksForPOST: function() {
             return this._links.map( function( link ) {
                 return { link: link };
@@ -100,6 +110,7 @@
                 .error( function( err ) {
                     console.log( err );
                     _this._setError( err.responseJSON.error );
+                    _this._setInvalidLinks( err.responseJSON.invalids || [] );
                     _this._setState( Constants.STATES.ENTERING );
                     _this.emitChange();
                 } );

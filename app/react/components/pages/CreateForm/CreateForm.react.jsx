@@ -38,7 +38,8 @@
                                 ( this._getStateFromStores().error ) ? <ErrorBox error={ this._getStateFromStores().error } /> : undefined
                             }
                             <LinksList
-                                links={ this._getStateFromStores().links } />
+                                links={ this._getStateFromStores().links }
+                                invalidLinks={ this._getStateFromStores().invalidLinks }/>
                             <SubmitBox
                                 slug={ this._getStateFromStores().slug } />
                         </div>
@@ -59,7 +60,8 @@
                 links: LinksFormListStore.getAll(),
                 form_state: LinksFormListStore.getState(),
                 slug: LinksFormListStore.getSlug(),
-                error: LinksFormListStore.getError()
+                error: LinksFormListStore.getError(),
+                invalidLinks: LinksFormListStore.getInvalidLinks()
             };
         },
         _onChange: function() {

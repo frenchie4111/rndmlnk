@@ -8,7 +8,8 @@
 (function() {
     'use strict';
 
-    var React = require( 'react' );
+    var React = require( 'react' ),
+        _ = require( 'underscore' );
 
     var Bar = require( '../../shared/Box.react.jsx' ),
         TableView = require( '../../shared/TableView.react.jsx' ),
@@ -91,7 +92,8 @@
                         } }
                         onDelete={ function() {
                             LinksFormActionCreator.indexDeleted( i );
-                        } }/>
+                        } }
+                        error={ _.contains( this.props.invalidLinks, i ) }/>
                 </Bar>
             )
         },
@@ -99,7 +101,8 @@
         // React Methods
         getDefaultProps: function() {
             return {
-                links: []
+                links: [],
+                invalidLinks: []
             }
         },
         render: function() {

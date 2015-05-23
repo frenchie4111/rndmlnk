@@ -62,11 +62,13 @@
             this.props.onChange( event.target.value );
         },
         _getInputStyle: function() {
-            var style = this._style.input;
+            var style = _.clone( this._style.input );
 
             if( this.props.error ) {
                 style = _.extend( style, this._style.input.error );
             }
+
+            console.log( this.props.error, style );
 
             return style;
         },
