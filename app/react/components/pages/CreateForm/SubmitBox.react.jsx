@@ -57,26 +57,11 @@
         _onSlugChange: function( event ) {
             LinksFormActionCreator.slugChanged( event.target.value );
         },
-        _getStateFromStores: function() {
-            return {
-                slug: LinksFormListStore.getSlug()
-            };
-        },
-        _onChange: function() {
-            this.setState( this._getStateFromStores() );
-        },
 
         getDefaultProps: function() {
-            return {}
-        },
-        getInitialState: function() {
-            return this._getStateFromStores()
-        },
-        componentDidMount: function() {
-            LinksFormListStore.addChangeListener( this._onChange );
-        },
-        componentDidUnmount: function() {
-            LinksFormListStore.removeChangeListener( this._onChange );
+            return {
+                slug: null
+            }
         },
         render: function() {
             return (
@@ -89,7 +74,7 @@
                             type='text'
                             style={ this._style.slug_text.input }
                             onChange={ this._onSlugChange }
-                            value={ this.state.slug }
+                            value={ this.props.slug }
                             placeholder='optional'
                             />
                     </div>

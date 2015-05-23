@@ -35,7 +35,8 @@
                         <div>
                             <LinksList
                                 links={ this._getStateFromStores().links } />
-                            <SubmitBox />
+                            <SubmitBox
+                                slug={ this._getStateFromStores().slug } />
                         </div>
                     );
                 case( Constants.STATES.SUBMITTING ):
