@@ -12,7 +12,7 @@
 
     var Bar = require( '../../shared/Box.react.jsx' ),
         TableView = require( '../../shared/TableView.react.jsx' ),
-        LinksFormTableView = require( './LinksList.react.jsx' ),
+        LinksFormTableView = require( './../LinksList.react.jsx' ),
         Button = require( '../../shared/Button.react.jsx' );
 
     var LinksFormActionCreator = require( '../../../actions/LinksFormActionCreator' ),
