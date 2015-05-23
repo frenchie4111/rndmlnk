@@ -15,7 +15,8 @@
         LinksList = require( './LinksList.react.jsx' ),
         SubmitBox = require( './SubmitBox.react.jsx' ),
         FormSubmitting = require( './FormSubmitting.react.jsx' ),
-        FormSubmitted = require( './FormSubmitted.react.jsx' );
+        FormSubmitted = require( './FormSubmitted.react.jsx' ),
+        ErrorBox = require( './ErrorBox.react.jsx' );
 
     var LinksFormActionCreator = require( '../../../actions/LinksFormActionCreator' ),
         LinksFormListStore = require( '../../../stores/LinksFormListStore' ),
@@ -33,6 +34,9 @@
                 case( Constants.STATES.ENTERING ):
                     return (
                         <div>
+                            {
+                                ( this._getStateFromStores().error ) ? <ErrorBox error={ this._getStateFromStores().error } /> : undefined
+                            }
                             <LinksList
                                 links={ this._getStateFromStores().links } />
                             <SubmitBox
@@ -54,7 +58,8 @@
             return {
                 links: LinksFormListStore.getAll(),
                 form_state: LinksFormListStore.getState(),
-                slug: LinksFormListStore.getSlug()
+                slug: LinksFormListStore.getSlug(),
+                error: LinksFormListStore.getError()
             };
         },
         _onChange: function() {

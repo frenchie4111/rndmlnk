@@ -18,22 +18,24 @@
     module.exports = ErrorBox = React.createClass( {
         getDefaultProps: function() {
             return {
-                style: {
-                    backgroundColor: '#3498DB'
-                },
-                table_cell_style: {}
+                error: 'Unknown Error Occurred'
             };
         },
         _style: {
             bar: {
-                backgroundColor: '#E74C3C'
+                backgroundColor: '#E74C3C',
+                color: '#ECF0F1',
+                fontSize: 24,
+                paddingLeft: 17,
+                marginTop: 17,
+                boxSizing: 'border-box'
             }
         },
         render: function() {
             return (
                 <Bar
                     style={ this._style.bar }>
-                    An Error Has Occurred
+                    Error: { this.props.error }
                 </Bar>
             );
         }

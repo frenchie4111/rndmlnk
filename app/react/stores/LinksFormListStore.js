@@ -19,6 +19,7 @@
         _links: [ '', '', '' ],
         _state: Constants.STATES.ENTERING,
         _slug: null,
+        _error: null,
 
         emitChange: function() {
             this.emit( this.CHANGE_EVENT );
@@ -42,6 +43,10 @@
 
         getSlug: function() {
             return this._slug;
+        },
+
+        getError: function() {
+            return this._error;
         },
 
         _valueChanged: function( index, new_value ) {
