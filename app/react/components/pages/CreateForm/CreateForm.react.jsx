@@ -12,30 +12,73 @@
 
     var Bar = require( '../../shared/Box.react.jsx' ),
         TableView = require( '../../shared/TableView.react.jsx' ),
-        LinksFormTableView = require( './LinksList.react.jsx' ),
-        LinksFormSubmitBox = require( './SubmitBox.react.jsx' );
+        LinksList = require( './LinksList.react.jsx' ),
+        SubmitBox = require( './SubmitBox.react.jsx' ),
+        FormSubmitting = require( './FormSubmitting.react.jsx' ),
+        FormSubmitted = require( './FormSubmitted.react.jsx' );
 
     var LinksFormActionCreator = require( '../../../actions/LinksFormActionCreator' ),
-        LinksFormListStore = require( '../../../stores/LinksFormListStore' );
+        LinksFormListStore = require( '../../../stores/LinksFormListStore' ),
+        Constants = require( '../../../constants/HomepageConstants.js' );
 
     var LinksForm;
 
     //noinspection JSUnusedAssignment,JSUnusedGlobalSymbols
     module.exports = LinksForm = React.createClass( {
+        _style: {
+
+        },
+        _renderFormState: function() {
+            switch( this._getStateFromStores().form_state ) {
+                case( Constants.STATES.ENTERING ):
+                    return (
+                        <div>
+                            <LinksList />
+                            <SubmitBox />
+                        </div>
+                    );
+                case( Constants.STATES.SUBMITTING ):
+                    return (
+                        <FormSubmitting />
+                    );
+                case( Constants.STATES.SUBMITTED ):
+                    return (
+                        <FormSubmitted
+                            slug={ this._getStateFromStores().slug } />
+                    );
+            }
+        },
+        _getStateFromStores: function() {
+            return {
+                form_state: LinksFormListStore.getState(),
+                slug: LinksFormListStore.getSlug()
+            };
+        },
+        _onChange: function() {
+            this.setState( this._getStateFromStores() );
+        },
+
+        render: function() {
+            return (
+                <div>
+                    {
+                        this._renderFormState()
+                    }
+                </div>
+            );
+        },
         getDefaultProps: function() {
             return {
             }
         },
-        _style: {
-
+        getInitialState: function() {
+            return this._getStateFromStores();
         },
-        render: function() {
-            return (
-                <div>
-                    <LinksFormTableView />
-                    <LinksFormSubmitBox />
-                </div>
-            );
+        componentDidMount: function() {
+            LinksFormListStore.addChangeListener( this._onChange );
+        },
+        componentDidUnmount: function() {
+            LinksFormListStore.removeChangeListener( this._onChange );
         }
     } );
 })();
