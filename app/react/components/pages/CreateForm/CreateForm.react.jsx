@@ -33,7 +33,8 @@
                 case( Constants.STATES.ENTERING ):
                     return (
                         <div>
-                            <LinksList />
+                            <LinksList
+                                links={ this._getStateFromStores().links } />
                             <SubmitBox />
                         </div>
                     );
@@ -50,6 +51,7 @@
         },
         _getStateFromStores: function() {
             return {
+                links: LinksFormListStore.getAll(),
                 form_state: LinksFormListStore.getState(),
                 slug: LinksFormListStore.getSlug()
             };

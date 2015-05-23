@@ -95,27 +95,12 @@
                 </Bar>
             )
         },
-        _getStateFromDataSource: function() {
-            return {
-                links: LinksFormListStore.getAll()
-            };
-        },
-        _onChange: function() {
-            this.setState( this._getStateFromDataSource );
-        },
 
         // React Methods
         getDefaultProps: function() {
-            return {}
-        },
-        getInitialState: function() {
-            return this._getStateFromDataSource();
-        },
-        componentDidMount: function() {
-            LinksFormListStore.addChangeListener( this._onChange );
-        },
-        componentDidUnmount: function() {
-            LinksFormListStore.removeChangeListener( this._onChange );
+            return {
+                links: []
+            }
         },
         render: function() {
             return (
@@ -124,7 +109,7 @@
                     <TableView
                         renderHeader={ this._renderHeader }
                         renderRow={ this._renderRow }
-                        data={ this.state.links } />
+                        data={ this.props.links } />
                 </div>
             );
         }
