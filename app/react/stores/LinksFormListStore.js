@@ -74,6 +74,11 @@
             this.emitChange();
         },
 
+        _setError: function( new_error ) {
+            this._error = new_error;
+            this.emitChange();
+        },
+
         _getLinksForPOST: function() {
             return this._links.map( function( link ) {
                 return { link: link };
@@ -90,6 +95,12 @@
                     console.log( 'response', data );
                     _this._setSlug( data.redirect_link );
                     _this._setState( Constants.STATES.SUBMITTED );
+                    _this.emitChange();
+                } )
+                .error( function( err ) {
+                    console.log( err );
+                    _this._setError( err.responseText );
+                    _this._setState( Constants.STATES.ENTERING );
                     _this.emitChange();
                 } );
         }
